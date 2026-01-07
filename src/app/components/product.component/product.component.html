@@ -1,41 +1,49 @@
-
 <section class="product-page">
-    <div class="user-card">
-        <div class="user-card-inner">
-            <p-table [value]="products" [tableStyle]="{ 'min-width': '48rem' }" [scrollable]="true" scrollHeight="60vh" styleClass="custom-table">
-    <ng-template #caption>
-        <div class="flex items-center justify-between">
-            <span class="text-xl font-bold">Product Table</span>
-        </div>
-    </ng-template>
-    <ng-template #header>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Image</th>
-        </tr>
-    </ng-template>
-    <ng-template #body let-product>
-        <tr>
+  <div class="user-card">
+    <div class="user-card-inner">
+      <p-table
+        #dt
+        [value]="products"
+        [tableStyle]="{ 'min-width': '48rem' }"
+        [scrollable]="true"
+        scrollHeight="60vh"
+        [globalFilterFields]="['title']"
+      >
+        <ng-template #caption>
+          <div class="flex items-center justify-between">
+            <span class="table-heading">Product Table</span>
+          </div>
+        </ng-template>
+
+        <ng-template #header>
+          <tr class="table-header">
+            <th class="header-grey">ID</th>
+            <th class="header-grey">Title</th>
+            <th class="header-grey">Description</th>
+            <th class="header-grey">Category</th>
+            <th class="header-grey" pSortableColumn="price">
+              Price (USD) <p-sortIcon field="price" />
+            </th>
+            <th class="header-grey">Image</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-product>
+          <tr class="table-body">
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.category }}</td>
-            <td>{{ product.price }}</td>
+            <td>${{ product.price }}</td>
             <td>
-                <img
-                    [src]="product.images?.[0] || product.image"
-                    alt="{{product.title}}"
-                    class="product-thumb"
-                />
+              <img
+                [src]="product.images?.[0] || product.image"
+                alt="{{ product.title }}"
+                class="product-thumb"
+              />
             </td>
-        </tr>
-    </ng-template>
-
-            </p-table>
-        </div>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
+  </div>
 </section>

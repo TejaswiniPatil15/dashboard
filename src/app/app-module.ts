@@ -31,16 +31,19 @@ import { HeaderComponent } from './components/header.component/header.component'
     ProfileComponent,
     UserComponent,
     ProductComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
-  providers: [AuthGuard,providePrimeNG({
-        theme: {
-            preset: Aura, // Set the theme preset here
-            options: {
-                darkModeSelector: '.my-app-dark' // Optional: custom dark mode class
-            }
-        }
-    })],
+  providers: [
+    AuthGuard,
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

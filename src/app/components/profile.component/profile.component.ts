@@ -1,4 +1,3 @@
-// dashboard\my-project-name\src\app\components\profile.component\profile.component.ts
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,21 +10,23 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient){}
-
-  user:any={};
+  user: any = {};
   sidebarOpen = true;
-  
+
   onSidebarToggle(open: boolean) {
     this.sidebarOpen = !!open;
   }
-  
-ngOnInit(){
- if (typeof window !== 'undefined' && window.localStorage) {
-  const h=new HttpHeaders({Authorization:`Bearer ${window.localStorage.getItem('token')}`});
-  this.http.get('https://dummyjson.com/auth/me',{headers:h}).subscribe(res=>this.user=res);
- }
-}
 
+  ngOnInit() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const h = new HttpHeaders({
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      });
+      this.http
+        .get('https://dummyjson.com/auth/me', { headers: h })
+        .subscribe((res) => (this.user = res));
+    }
+  }
 }

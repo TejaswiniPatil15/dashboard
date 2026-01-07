@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-product.component',
   standalone: true,
-  imports: [CommonModule, TableModule, TagModule, ButtonModule],
+  imports: [CommonModule, TableModule, TagModule, ButtonModule, InputTextModule],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
   constructor(private http: HttpClient) {}
+
   products: any[] = [];
 
   ngOnInit() {

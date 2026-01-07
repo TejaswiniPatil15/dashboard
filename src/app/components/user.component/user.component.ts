@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-user.component',
   standalone: true,
-  imports: [CommonModule, TableModule, TagModule, ButtonModule],
+  imports: [CommonModule, TableModule, TagModule, ButtonModule, InputTextModule],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })

@@ -8,17 +8,15 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { finalize } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ToastModule],
   providers: [MessageService],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm!: any;
   loading = false;
 
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
@@ -43,19 +41,21 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.auth.login(this.loginForm.value).pipe(
-      finalize(() => (this.loading = false))
-    ).subscribe({
-      next: (res: any) => {
-        localStorage.setItem('token', res.accessToken);
-        this.router.navigate(['/profile']);
-      },
-      error: (err: any) => this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'An error occurred: ' + (err.message || 'Unknown error'),
-        sticky: true
-      })
-    });
+
+    this.auth
+      .login(this.loginForm.value)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe({
+        next: (res: any) => {
+          localStorage.setItem('token', res.accessToken);
+          this.router.navigate(['/profile']);
+        },
+        error: (err: any) =>
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'An error occurred: ' + (err.message || 'Unknown error'),
+          }),
+      });
   }
 }

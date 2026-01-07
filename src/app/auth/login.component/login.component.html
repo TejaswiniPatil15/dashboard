@@ -1,6 +1,12 @@
 <div class="login-page">
   <div class="logo-wrap">
-    <img src="../../../assets/logo.png" alt="logo" class="brand" />
+    <svg width="60" height="60" viewBox="0 0 64 64">
+      <path
+        d="M32 4c0 0-6 8-12 16-6 8-6 20 0 28 6 8 12 12 12 12s6-4 12-12c6-8 6-20 0-28S32 4 32 4z"
+        fill="#e94b5b"
+      />
+      <path d="M32 4s6 8 12 16 6 20 0 28c-6 8-12 12-12 12V4z" fill="#2b95c7" />
+    </svg>
   </div>
 
   <div class="login-card">
@@ -10,7 +16,6 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <div class="field">
         <span class="icon user-icon" aria-hidden="true">
-          <!-- user icon -->
           <span class="pi pi-user" style="font-size: 0.9rem"></span>
         </span>
         <input formControlName="username" placeholder="USERNAME" class="underline" />
@@ -19,12 +24,11 @@
         *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
         class="field-error"
       >
-        Username is required
+        *Username is required
       </div>
 
       <div class="field">
         <span class="icon lock-icon" aria-hidden="true">
-          <!-- lock icon -->
           <span class="pi pi-lock" style="font-size: 1rem"></span>
         </span>
         <input
@@ -38,7 +42,7 @@
         *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
         class="field-error"
       >
-        Password is required
+        *Password is required
       </div>
 
       <div class="row between">
@@ -46,7 +50,7 @@
         <a class="forgot" href="#">Forgot password?</a>
       </div>
 
-      <button class="btn-login" type="submit" [disabled]="loginForm.invalid || loading">
+      <button class="btn-login" type="submit" [class.disabled]="loginForm.invalid || loading">
         <span class="btn-icon">
           <svg
             width="14"

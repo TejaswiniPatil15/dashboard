@@ -1,4 +1,3 @@
-// dashboard\my-project-name\src\app\layout\sidebar.component\sidebar.component.ts
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
@@ -10,10 +9,10 @@ import { EventEmitter, Output, Input } from '@angular/core';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   @Input() isOpen = true;
   @Output() toggle = new EventEmitter<boolean>();

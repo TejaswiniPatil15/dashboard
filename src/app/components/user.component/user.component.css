@@ -1,22 +1,19 @@
-
 .user-card {
   background: #f1f8fa;
   border-radius: 18px;
-  padding: 18px;
   box-shadow: 0 18px 40px rgba(17, 37, 58, 0.06);
 }
 
 .user-card-inner {
   background: #ffffff;
   border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  padding: 18px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   overflow: visible;
 }
 
-/* Caption / title */
 .user-card-inner .text-xl {
   font-size: 16px;
   font-weight: 600;
@@ -25,7 +22,7 @@
 
 .table-wrapper {
   width: 100%;
-  overflow: auto; /* horizontal scroll when needed */
+  overflow: auto;
 }
 
 .user-card-inner table {
@@ -35,7 +32,6 @@
   table-layout: fixed;
 }
 
-/* PrimeNG scrollable table adjustments */
 .custom-table .p-datatable-scrollable-header-box {
   position: sticky;
   top: 0;
@@ -44,7 +40,7 @@
 }
 
 .custom-table .p-datatable-scrollable-body {
-  max-height: 60vh; /* matches scrollHeight */
+  max-height: 60vh;
 }
 
 .user-card-inner thead th {
@@ -57,10 +53,9 @@
   font-size: 10px;
 }
 
-/* Sticky table header */
 .user-card-inner thead th {
   position: sticky;
-  top: 0; /* stick to top of scrolling container / viewport */
+  top: 0;
   z-index: 5;
 }
 
@@ -71,16 +66,18 @@
   font-size: 13px;
 }
 
-/* Prevent wrapping for specific columns */
 .nowrap {
   white-space: nowrap;
 }
 
-/* allow wrapping for long emails */
 .wrap {
   white-space: normal;
-  overflow-wrap: anywhere;
   word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.searchbar {
+  font-size: 0.8rem;
 }
 
 .user-card-inner tbody tr:nth-child(even) {
@@ -88,13 +85,12 @@
 }
 
 .user-card-inner img {
-  width: 44px;
-  height: 44px;
+  width: 2.1rem;
+  height: 2.1rem;
   object-fit: cover;
   border-radius: 6px;
 }
 
-/* Style PrimeNG tag (edit) to match screenshot */
 .user-card-inner .p-tag {
   border-radius: 10px;
   padding: 4px 8px;
@@ -106,10 +102,37 @@
   color: #222;
 }
 
-/* Footer info */
 .user-card-inner tfoot td {
   padding: 12px 18px;
   color: #666;
+}
+
+.email-col {
+  max-width: 180px;
+  min-width: 140px;
+}
+
+.table-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: -0.75rem;
+  margin-right: 1rem;
+}
+.table-header {
+  font-size: 0.75rem;
+}
+
+.table-body {
+  line-height: 1rem;
+  font-size: 0.75rem;
+}
+
+.header-grey {
+  background: #f3f6f7 !important;
+}
+
+.header-grey {
+  background: #f3f6f7 !important;
 }
 
 @media (max-width: 900px) {

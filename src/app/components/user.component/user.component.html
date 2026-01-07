@@ -1,34 +1,42 @@
 <section class="user-page">
-    <div class="user-card">
-        <div class="user-card-inner">
-                        <p-table
-                            [value]="users"
-                            [tableStyle]="{ 'min-width': '48rem' }"
-                            [scrollable]="true"
-                            scrollHeight="60vh"
-                            styleClass="custom-table"
-                        >
-    <ng-template #caption>
-        <div class="flex items-center justify-between">
-            <span class="text-xl font-bold">User Table</span>
-        </div>
-    </ng-template>
-    <ng-template #header>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th class="wrap">Email id</th>
-            <th class="nowrap">Phone Number</th>
-            <th class="nowrap">Birth Date</th>
-            <th>Image</th>
-            <th>Edit</th>
-            <th>Details</th>
-        </tr>
-    </ng-template>
-    <ng-template #body let-user>
-        <tr>
+  <div class="user-card">
+    <div class="user-card-inner">
+      <p-table
+        #dt
+        [value]="users"
+        [tableStyle]="{ 'min-width': '48rem' }"
+        [scrollable]="true"
+        scrollHeight="60vh"
+        [globalFilterFields]="['name']"
+      >
+        <ng-template #caption>
+          <div class="flex items-center justify-between">
+            <span class="table-heading">User Table</span>
+            <input
+              pInputText
+              type="text"
+              placeholder="Search keyword"
+              (input)="dt.filterGlobal($event.target.value, 'contains')"
+              class="searchbar"
+            />
+          </div>
+        </ng-template>
+        <ng-template #header>
+          <tr class="table-header">
+            <th class="header-grey">ID</th>
+            <th class="header-grey">First Name</th>
+            <th class="header-grey">Last Name</th>
+            <th class="header-grey">Gender</th>
+            <th class="header-grey wrap email-col">Email id</th>
+            <th class="header-grey nowrap">Phone Number</th>
+            <th class="header-grey nowrap">Birth Date</th>
+            <th class="header-grey">Image</th>
+            <th class="header-grey">Edit</th>
+            <th class="header-grey">Details</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-user>
+          <tr class="table-body">
             <td>{{ user.id }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
@@ -37,20 +45,15 @@
             <td class="nowrap">{{ user.phone }}</td>
             <td class="nowrap">{{ user.birthDate }}</td>
             <td>
-                <img
-                    [src]="user.image"
-                    class="w-24 rounded"
-                />
+              <img [src]="user.image" class="w-24 rounded" />
             </td>
             <td>
-                <p-tag value="Edit" severity="warn" />
+              <p-tag value="Edit" severity="warn" />
             </td>
-            <td>
-               View Details
-            </td>
-        </tr>
-    </ng-template>
-            </p-table>
-        </div>
+            <td>View Details</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
+  </div>
 </section>

@@ -1,6 +1,8 @@
-# MyProjectName
+# Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9. 
+I used primeng library here for table component and icons. 
+Many primeng component we can used but to show we can build through scrach as well an using any library how we can do it I used both approach.
 
 ## Development server
 
