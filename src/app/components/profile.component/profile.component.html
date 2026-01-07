@@ -1,0 +1,39 @@
+<!-- dashboard\my-project-name\src\app\components\profile.component\profile.component.html -->
+<section class="container">
+  <div class="card-outer">
+    <div class="card-inner">
+      <div class="card-left">
+        <h2>
+          WELCOME, <span class="name">{{ user?.firstName || 'TEST NAME' }} !</span>
+        </h2>
+
+        <div class="info-grid">
+          <div class="col">
+            <div class="label">Test Team</div>
+            <div class="value">6666666666</div>
+          </div>
+          <div class="col">
+            <div class="label">E-mail</div>
+            <div class="value">{{ user?.email || 'Test@gmail.com' }}</div>
+          </div>
+
+          <div class="col">
+            <div class="label">Sales Person</div>
+            <div class="value">Sales person name</div>
+          </div>
+          <div class="col">
+            <div class="label">Contact Number</div>
+            <div class="value">0000000000</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <div class="gear"><i class="pi pi-cog" style="font-size:1.5rem"></i></div>
+        <div class="avatar">
+          <img [src]="user?.image || user?.avatar || 'https://i.pravatar.cc/240'" alt="avatar" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

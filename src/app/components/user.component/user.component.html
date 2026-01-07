@@ -1,0 +1,56 @@
+<section class="user-page">
+    <div class="user-card">
+        <div class="user-card-inner">
+                        <p-table
+                            [value]="users"
+                            [tableStyle]="{ 'min-width': '48rem' }"
+                            [scrollable]="true"
+                            scrollHeight="60vh"
+                            styleClass="custom-table"
+                        >
+    <ng-template #caption>
+        <div class="flex items-center justify-between">
+            <span class="text-xl font-bold">User Table</span>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th class="wrap">Email id</th>
+            <th class="nowrap">Phone Number</th>
+            <th class="nowrap">Birth Date</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>Details</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-user>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.gender }}</td>
+            <td class="wrap">{{ user.email }}</td>
+            <td class="nowrap">{{ user.phone }}</td>
+            <td class="nowrap">{{ user.birthDate }}</td>
+            <td>
+                <img
+                    [src]="user.image"
+                    class="w-24 rounded"
+                />
+            </td>
+            <td>
+                <p-tag value="Edit" severity="warn" />
+            </td>
+            <td>
+               View Details
+            </td>
+        </tr>
+    </ng-template>
+            </p-table>
+        </div>
+    </div>
+</section>

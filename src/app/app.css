@@ -1,0 +1,32 @@
+/* dashboard\my-project-name\src\app\app.css */
+:root {
+  --sidebar-open-width: 12rem;
+  --sidebar-closed-width: 4.5rem;
+}
+
+/* MAIN CONTENT AREA */
+.main {
+  margin-left: var(--sidebar-open-width);
+  min-height: 100vh;
+  background: #fbfefc;
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar collapsed */
+.main.sidebar-closed {
+  margin-left: var(--sidebar-closed-width);
+}
+
+/* No sidebar (login pages etc) */
+.main.no-sidebar {
+  margin-left: 0;
+}
+
+/* Page content */
+.page-content {
+  padding: 1.5rem 2rem;
+  flex: 1;
+  overflow-y: auto;
+}

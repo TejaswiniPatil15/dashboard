@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --sidebar-open-width: 12rem;
+  --sidebar-closed-width: 4.5rem;
+}
+
+/* Main wrapper beside sidebar */
+.main-layout {
+  margin-left: var(--sidebar-open-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.main-layout.sidebar-closed {
+  margin-left: var(--sidebar-closed-width);
+}
+
+/* Content area */
+.content {
+  padding: 0;
+}

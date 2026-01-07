@@ -1,0 +1,45 @@
+<!-- dashboard\my-project-name\src\app\layout\sidebar.component\sidebar.component.html -->
+<aside class="sidebar" [class.closed]="!isOpen">
+  <div class="brand">
+    <button class="menu-btn" (click)="toggleSidebar()">
+      <svg width="60" height="60" viewBox="0 0 64 64">
+        <path
+          d="M32 4c0 0-6 8-12 16-6 8-6 20 0 28 6 8 12 12 12 12s6-4 12-12c6-8 6-20 0-28S32 4 32 4z"
+          fill="#e94b5b"
+        />
+        <path d="M32 4s6 8 12 16 6 20 0 28c-6 8-12 12-12 12V4z" fill="#2b95c7" />
+      </svg>
+    </button>
+  </div>
+
+  <nav class="nav">
+    <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <a routerLink="/users" routerLinkActive="active">
+      <span class="nav-text">User Page</span>
+    </a>
+
+    <a routerLink="/products" routerLinkActive="active">
+      <span class="nav-text">Product Page</span>
+    </a>
+  </nav>
+
+  <div class="bottom">
+    <button class="small">
+      <i class="pi pi-cog" style="font-size: 1rem"></i>
+      <span>Setting</span>
+    </button>
+
+    <button class="small">
+      <i class="pi pi-question-circle" style="font-size: 1rem"></i>
+      <span>Help</span>
+    </button>
+
+    <button class="small" (click)="logout()">
+      <i class="pi pi-sign-out" style="font-size: 1rem"></i>
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>

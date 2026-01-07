@@ -1,0 +1,41 @@
+
+<section class="product-page">
+    <div class="user-card">
+        <div class="user-card-inner">
+            <p-table [value]="products" [tableStyle]="{ 'min-width': '48rem' }" [scrollable]="true" scrollHeight="60vh" styleClass="custom-table">
+    <ng-template #caption>
+        <div class="flex items-center justify-between">
+            <span class="text-xl font-bold">Product Table</span>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-product>
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                <img
+                    [src]="product.images?.[0] || product.image"
+                    alt="{{product.title}}"
+                    class="product-thumb"
+                />
+            </td>
+        </tr>
+    </ng-template>
+
+            </p-table>
+        </div>
+    </div>
+</section>
