@@ -107,3 +107,75 @@
   border: none;
   cursor: pointer;
 }
+
+.delete-dialog .p-dialog-header,
+.delete-dialog .p-dialog-footer {
+  display: none;
+}
+
+.delete-dialog .p-dialog-content {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.dialog-header-bg {
+  height: 70px;
+  background: #dff4ff;
+}
+
+
+.icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -32px;
+}
+
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  background: #ff4d4f;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(255, 77, 79, 0.35);
+}
+
+
+.dialog-content {
+  padding: 20px 22px 26px;
+  text-align: center;
+}
+
+.dialog-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.dialog-content p {
+  font-size: 13px;
+  color: #6b6b6b;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+
+.primary-btn {
+  background: #1f8ccf;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 120px;
+}
+
+.primary-btn:hover {
+  background: #167bb8;
+}

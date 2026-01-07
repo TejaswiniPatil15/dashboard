@@ -3,21 +3,26 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventEmitter, Output, Input } from '@angular/core';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, DialogModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
+
   constructor(private router: Router) {}
 
   @Input() isOpen = true;
   @Output() toggle = new EventEmitter<boolean>();
 
   @HostListener('window:resize')
+
+  showDeleteDialog = false;
+
   onResize() {
     this.setSidebarByScreen();
   }
@@ -35,7 +40,13 @@ export class SidebarComponent {
     this.isOpen = !this.isOpen;
     this.toggle.emit(this.isOpen);
   }
-  logout() {
+  
+  onLogoutClick() {
+    this.showDeleteDialog = true;
+  }
+
+  onDeleteConfirm() {
+    this.showDeleteDialog = false;
     if (typeof window !== 'undefined' && window.localStorage) {
       window.localStorage.clear();
     }

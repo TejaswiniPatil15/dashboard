@@ -36,9 +36,39 @@
       <span>Help</span>
     </button>
 
-    <button class="small" (click)="logout()">
+    <button class="small" (click)="onLogoutClick()">
       <i class="pi pi-sign-out" style="font-size: 1rem"></i>
       <span>Logout</span>
     </button>
   </div>
 </aside>
+
+<p-dialog
+  [(visible)]="showDeleteDialog"
+  [modal]="true"
+  [closable]="false"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '320px' }"
+  styleClass="delete-dialog"
+>
+
+  <div class="dialog-header-bg"></div>
+
+  <div class="icon-wrap">
+    <div class="icon-circle">
+      <i class="pi pi-trash"></i>
+    </div>
+  </div>
+
+  <div class="dialog-content">
+    <h3>Are you sure !</h3>
+    <p>
+      This action cannot be undone. Please confirm to proceed.
+    </p>
+
+    <button class="primary-btn" (click)="onDeleteConfirm()">
+      Log Out
+    </button>
+  </div>
+</p-dialog>
