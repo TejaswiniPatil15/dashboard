@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { UserStateService } from '../../services/user-state.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,17 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private http: HttpClient) {}
-
   user: any = {};
+  private sub: Subscription | null = null;
+
+  constructor(private userState: UserStateService) {}
 
   ngOnInit() {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const h = new HttpHeaders({
-        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-      });
-      this.http
-        .get('https://dummyjson.com/auth/me', { headers: h })
-        .subscribe((res) => (this.user = res));
-    }
+    this.userState.loadCurrentUser().subscribe();
+    this.sub = this.userState.user$.subscribe((u) => (this.user = u));
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 }

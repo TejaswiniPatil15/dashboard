@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { UserStateService } from '../../services/user-state.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { finalize } from 'rxjs/operators';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userState: UserStateService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           localStorage.setItem('token', res.accessToken);
-          this.router.navigate(['/profile']);
+          this.userState.loadCurrentUser().subscribe(() => this.router.navigate(['/profile']));
         },
         error: (err: any) =>
           this.messageService.add({

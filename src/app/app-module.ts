@@ -15,6 +15,7 @@ import { SidebarComponent } from './layout/sidebar.component/sidebar.component';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { HeaderComponent } from './components/header.component/header.component';
+import { AUTH_INTERCEPTOR_PROVIDER } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [App],
@@ -35,6 +36,7 @@ import { HeaderComponent } from './components/header.component/header.component'
   ],
   providers: [
     AuthGuard,
+    AUTH_INTERCEPTOR_PROVIDER,
     providePrimeNG({
       theme: {
         preset: Aura,
