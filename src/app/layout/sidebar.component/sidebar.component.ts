@@ -18,11 +18,9 @@ export class SidebarComponent {
 
   @Input() isOpen = true;
   @Output() toggle = new EventEmitter<boolean>();
-
-  @HostListener('window:resize')
-
   showDeleteDialog = false;
 
+  @HostListener('window:resize')
   onResize() {
     this.setSidebarByScreen();
   }

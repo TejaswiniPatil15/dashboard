@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
@@ -15,17 +14,11 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   users: any[] = [];
-  filtered: any[] = [];
 
   ngOnInit() {
-    this.http
-      .get<any>('https://dummyjson.com/users')
-      .subscribe((router) => (this.users = router.users));
-  }
-  search(v: string) {
-    this.filtered = this.users.filter((u) => u.firstName.toLowerCase().includes(v.toLowerCase()));
+    this.http.get<any>('https://dummyjson.com/users').subscribe((r) => (this.users = r.users));
   }
 }
