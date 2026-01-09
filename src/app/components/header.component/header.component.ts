@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserStateService } from '../../services/user-state.service';
+import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,11 +14,11 @@ export class HeaderComponent {
   user: any = {};
   private sub: Subscription | null = null;
 
-  constructor(private userState: UserStateService) {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
-    this.userState.loadCurrentUser().subscribe();
-    this.sub = this.userState.user$.subscribe((u) => (this.user = u));
+    this.auth.loadCurrentUser().subscribe();
+    this.sub = this.auth.user$.subscribe((u) => (this.user = u));
   }
 
   ngOnDestroy() {

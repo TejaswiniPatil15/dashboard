@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventEmitter, Output, Input } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,8 +14,7 @@ import { DialogModule } from 'primeng/dialog';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   @Input() isOpen = true;
   @Output() toggle = new EventEmitter<boolean>();
@@ -38,16 +38,14 @@ export class SidebarComponent {
     this.isOpen = !this.isOpen;
     this.toggle.emit(this.isOpen);
   }
-  
+
   onLogoutClick() {
     this.showDeleteDialog = true;
   }
 
   onDeleteConfirm() {
     this.showDeleteDialog = false;
-    if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.clear();
-    }
+    this.auth.logout();
     this.router.navigate(['/login']);
   }
 }

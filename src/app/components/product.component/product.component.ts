@@ -22,7 +22,4 @@ export class ProductComponent {
       .get<any>('https://dummyjson.com/products')
       .subscribe((r) => (this.products = r.products));
   }
-  sort() {
-    this.products.sort((a, b) => a.price - b.price);
-  }
 }
